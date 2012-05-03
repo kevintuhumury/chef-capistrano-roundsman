@@ -9,9 +9,7 @@ Using all of this goodness, requires you to follow these easy steps:
 1. `bundle install`
 2. Edit `config/deploy.rb` and `config/deploy/production.rb`. If you're using [Vagrant](http://vagrantup.com/), you might want to edit `config/deploy/vagrant.rb` also.
 
-That's it. When using Vagrant, you'll want to deploy to that stage. This is done by running `cap vagrant deploy:setup` and after that `cap vagrant deploy`. If everything went according to plan, you can deploy to your actual server by running the `cap deploy:setup` (or `cap production deploy:setup`). When that's done, run:
-
-  cap deploy
+That's it. When using Vagrant, you'll want to deploy to that stage. This is done by running `cap vagrant deploy:setup` and after that `cap vagrant deploy`. If everything went according to plan, you can deploy to your actual server by running the `cap deploy:setup` (or `cap production deploy:setup`) command. When that's done, run: `cap deploy`.
 
 ## Note
 
