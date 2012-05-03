@@ -2,7 +2,7 @@ set :stage,                 "vagrant"
 set :main_server,           "192.168.1.10"
 set :application_directory, "<application>"
 
-set :url,                   main_server
+set :url,                   "<url>"
 set :email,                 "<email>"
 
 set :user,                  "vagrant"
