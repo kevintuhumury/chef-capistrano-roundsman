@@ -18,8 +18,6 @@ before "deploy:update_code" do
   roundsman.run_list "recipe[application::default]", "recipe[application::mysql]"
 end
 
-before "bundle:install", "app:update_current_release"
-
 after "deploy:finalize_update", "app:symlink"
 after "deploy:update_code",     "app:remove_rvmrc"
 after "deploy",                 "deploy:cleanup"
@@ -44,11 +42,6 @@ namespace :app do
   desc "symbolic link to the shared assets"
   task :symlink, :roles => [:app] do
     run "ln -sf #{shared_path}/database.yml #{release_path}/config/database.yml"
-  end
-
-  desc "update the release path, since it's using the previous one"
-  task :update_current_release do
-    set :current_release, release_path
   end
 
   desc "remove rvmrc"
