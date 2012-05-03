@@ -1,6 +1,6 @@
 # Chef (solo), Capistrano and Roundsman Bootstrap
 
-This repository contains a collection of cookbooks and configuration files, which can be used to manage your server dependencies and deploy your Rails app. This is al made possible by [Chef](http://www.opscode.com/chef/) (solo), [Capistrano](https://github.com/capistrano/capistrano) and [Roundsman](https://github.com/iain/roundsman) combines the two of them.
+This repository contains a collection of cookbooks and configuration files, which can be used to manage your server dependencies and deploy your Rails app. This is al made possible by [Chef](http://www.opscode.com/chef/) (solo), [Capistrano](https://github.com/capistrano/capistrano) and [Roundsman](https://github.com/iain/roundsman), which combines the two for easy deployment.
 
 ## Usage
 
