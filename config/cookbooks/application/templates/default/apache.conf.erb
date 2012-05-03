@@ -1,0 +1,38 @@
+<VirtualHost *:80>
+
+  ServerAdmin <%= @email %>
+  ServerName <%= @url %>
+  ServerAlias www.<%= @url %>
+
+  DocumentRoot <%= @public %>
+
+  RailsBaseURI /
+  RailsEnv production
+  PassengerMinInstances 2
+  PassengerPreStart http://<%= @url %>/
+
+  <Directory <%= @public %>>
+    Options FollowSymLinks
+    AllowOverride None
+    Order allow,deny
+    Allow from all
+  </Directory>
+
+  <FilesMatch "\.(ico|pdf|flv|jpe?g|png|gif|js|css|swf)$">
+    ExpiresActive On
+    ExpiresDefault "access plus 1 year"
+  </FilesMatch>
+
+  LogLevel info
+  ErrorLog /var/log/apache2/<%= @application %>-error.log
+  CustomLog /var/log/apache2/<%= @application %>-access.log combined
+
+  RewriteEngine On
+  RewriteLog /var/log/apache2/<%= @application %>-rewrite.log
+  RewriteLogLevel 0
+
+  RewriteCond %{DOCUMENT_ROOT}/system/maintenance.html -f
+  RewriteCond %{SCRIPT_FILENAME} !maintenance.html
+  RewriteRule ^.*$ /system/maintenance.html [L]
+
+</VirtualHost>
