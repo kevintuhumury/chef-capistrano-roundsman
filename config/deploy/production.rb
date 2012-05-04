@@ -20,4 +20,3 @@ set :mysql,                 :server_root_password => "<server_root_password>",
 set :logrotate,             :logs => ["#{deploy_to}/current/log/production.log"]
 
 server "#{main_server}",    :web, :app, :db, :primary => true
-
