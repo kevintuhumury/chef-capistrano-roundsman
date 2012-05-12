@@ -13,4 +13,4 @@ That's it. When using Vagrant, you'll want to deploy to that stage. This is done
 
 ## Note
 
-This setup will install Apache, MySQL and Passenger and has been tested on Ubuntu 12.04 LTS.
+This setup will install Apache, MySQL and Passenger and has been tested on Ubuntu 12.04 LTS. It can be used to deploy multiple projects. Just clone it into a separate 'deploy' project and create a new stage for each of your websites.
