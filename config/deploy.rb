@@ -38,6 +38,10 @@ namespace :app do
 
   desc "remove rvmrc"
   task :remove_rvmrc, :roles => [:app] do
-    run "rm #{release_path}/.rvmrc"
+    run "rm #{release_path}/.rvmrc" if file_exists? "#{release_path}/.rvmrc"
   end
+end
+
+def file_exists?(path)
+  "true" ==  capture("if [ -e #{path} ]; then echo 'true'; fi").strip
 end
