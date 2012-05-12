@@ -1,6 +1,16 @@
-set :stage,                 "production"
+load "deploy/assets"
+
+set :application,           "<application>"
 set :main_server,           "<server>"
-set :application_directory, "<application>"
+
+set :stage,                 "#{application}-production"
+set :application_directory, "#{application}"
+
+set :scm,                   :git
+set :branch,                "master"
+set :repository,            "git@github.com:<yourname>/<example>.git"
+set :deploy_via,            :remote_cache
+set :copy_exclude,          [".git", ".gitignore"]
 
 set :url,                   "<url>"
 set :email,                 "<email>"
@@ -20,3 +30,11 @@ set :mysql,                 :server_root_password => "<server_root_password>",
 set :logrotate,             :logs => ["#{deploy_to}/current/log/production.log"]
 
 server "#{main_server}",    :web, :app, :db, :primary => true
+
+before "deploy:update_code" do
+  roundsman.run_list "recipe[application::default]", "recipe[application::mysql]"
+end
+
+after "deploy:create_symlink" do
+  roundsman.run_list "recipe[application::apache]"
+end
