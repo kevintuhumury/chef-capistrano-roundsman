@@ -13,3 +13,6 @@
 [submodule "vendor/cookbooks/build-essential"]
 	path = vendor/cookbooks/build-essential
 	url = git@github.com:opscode-cookbooks/build-essential.git
+[submodule "vendor/cookbooks/apache2"]
+	path = vendor/cookbooks/apache2
+	url = git@github.com:opscode-cookbooks/apache2.git
