@@ -7,3 +7,6 @@
 [submodule "vendor/cookbooks/ohai"]
 	path = vendor/cookbooks/ohai
 	url = git@github.com:opscode-cookbooks/ohai.git
+[submodule "vendor/cookbooks/yum"]
+	path = vendor/cookbooks/yum
+	url = git@github.com:opscode-cookbooks/yum.git
