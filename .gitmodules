@@ -16,3 +16,6 @@
 [submodule "vendor/cookbooks/apache2"]
 	path = vendor/cookbooks/apache2
 	url = git@github.com:opscode-cookbooks/apache2.git
+[submodule "vendor/cookbooks/passenger_apache2"]
+	path = vendor/cookbooks/passenger_apache2
+	url = git@github.com:opscode-cookbooks/passenger_apache2.git
