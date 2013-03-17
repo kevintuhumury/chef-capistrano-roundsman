@@ -4,3 +4,6 @@
 [submodule "vendor/cookbooks/nginx"]
 	path = vendor/cookbooks/nginx
 	url = git@github.com:opscode-cookbooks/nginx.git
+[submodule "vendor/cookbooks/ohai"]
+	path = vendor/cookbooks/ohai
+	url = git@github.com:opscode-cookbooks/ohai.git
