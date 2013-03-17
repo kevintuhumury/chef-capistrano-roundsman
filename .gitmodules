@@ -1,3 +1,6 @@
 [submodule "vendor/cookbooks/apt"]
 	path = vendor/cookbooks/apt
 	url = git@github.com:opscode-cookbooks/apt.git
+[submodule "vendor/cookbooks/nginx"]
+	path = vendor/cookbooks/nginx
+	url = git@github.com:opscode-cookbooks/nginx.git
