@@ -10,3 +10,6 @@
 [submodule "vendor/cookbooks/yum"]
 	path = vendor/cookbooks/yum
 	url = git@github.com:opscode-cookbooks/yum.git
+[submodule "vendor/cookbooks/build-essential"]
+	path = vendor/cookbooks/build-essential
+	url = git@github.com:opscode-cookbooks/build-essential.git
