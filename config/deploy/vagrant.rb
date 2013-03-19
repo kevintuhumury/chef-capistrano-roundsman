@@ -1,40 +1,34 @@
+# since we're deploying a rails app, we need to precompile the assets.
+# as an example the nginx-rails app is being deployed to vagrant here.
 load "deploy/assets"
 
-set :application,           "<application>"
-set :main_server,           "192.168.1.10"
+set :host,        "192.168.33.10"
+set :application, "nginx-rails"
+set :stage,       "vagrant-#{application}"
 
-set :stage,                 "#{application}-production"
-set :application_directory, "#{application}"
+set :scm,         :git
+set :branch,      "master"
+set :repository,  "git@github.com:<yourname>/<example>.git"
+set :deploy_via,  :remote_cache
 
-set :scm,                   :git
-set :branch,                "master"
-set :repository,            "git@github.com:<yourname>/<example>.git"
-set :deploy_via,            :remote_cache
-set :copy_exclude,          [".git", ".gitignore"]
+set :url,         ["#{application}.com"]
 
-set :url,                   "<url>"
-set :email,                 "<email>"
+set :user,        "vagrant"
+set :password,    "vagrant"
 
-set :user,                  "vagrant"
-set :password,              "vagrant"
-set :deploy_to,             "/var/www/#{application_directory}"
+set :mysql,       server_root_password: "<server_root_password>",
+                  database: "<database>",
+                  username: "<username>",
+                  password: "<password>"
 
-set :rails_env,             "production"
-set :ruby_version,          "1.9.3-p194"
+set :logrotate,   logs: ["#{deploy_to}/current/log/production.log"]
 
-set :passenger,             :version => "3.0.12"
-set :mysql,                 :server_root_password => "<server_root_password>",
-                            :database => "<database>",
-                            :username => "deploy",
-                            :password => "<password>"
-set :logrotate,             :logs => ["#{deploy_to}/current/log/production.log"]
-
-server "#{main_server}",    :web, :app, :db, :primary => true
+server host,      :web, :app, :db, primary: true
 
 before "deploy:update_code" do
-  roundsman.run_list "recipe[application::default]", "recipe[application::mysql]"
+  roundsman.run_list "recipe[default::default]", "recipe[default::mysql]"
 end
 
 after "deploy:create_symlink" do
-  roundsman.run_list "recipe[application::apache]"
+  roundsman.run_list "recipe[default::nginx]"
 end
