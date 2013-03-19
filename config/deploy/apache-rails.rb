@@ -18,7 +18,7 @@ set :passenger,   version: "3.0.12"
 # be set directly in this file. So, those attributes will be set in the mysql
 # recipe by applying the below temporary variables: root_passwd and passwd.
 
-set :mysql,       root_passrd: "<server_root_password>",
+set :mysql,       root_passwd: "<server_root_password>",
                   database:    "<database>",
                   username:    "<username>",
                   passwd:      "<password>"

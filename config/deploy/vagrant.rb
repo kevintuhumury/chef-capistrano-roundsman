@@ -16,10 +16,14 @@ set :url,         ["#{application}.com"]
 set :user,        "vagrant"
 set :password,    "vagrant"
 
-set :mysql,       server_root_password: "<server_root_password>",
+# NOTE: for some reason the server_root_password and password attributes can't
+# be set directly in this file. So, those attributes will be set in the mysql
+# recipe by applying the below temporary variables: root_passwd and passwd.
+
+set :mysql,       root_passwd: "<server_root_password>",
                   database: "<database>",
                   username: "<username>",
-                  password: "<password>"
+                  passwd: "<password>"
 
 set :logrotate,   logs: ["#{deploy_to}/current/log/production.log"]
 
