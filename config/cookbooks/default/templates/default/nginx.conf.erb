@@ -1,0 +1,19 @@
+server {
+  listen 80;
+  server_name <%= @url %> www.<%= @url %>;
+  root <%= @public %>;
+
+  passenger_enabled on;
+  passenger_min_instances 2;
+
+  location ~* \.(ico|pdf|flv|jpe?g|png|gif|js|css|swf)$ {
+    expires max;
+    add_header Pragma public;
+    add_header Cache-Control "public, must-revalidate, proxy-revalidate";
+  }
+
+  error_log /var/log/nginx/<%= @application %>-error.log;
+  access_log /var/log/nginx/<%= @application %>-access.log;
+}
+
+passenger_pre_start http://<%= @url %>/;
